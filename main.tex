@@ -1,0 +1,134 @@
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}      % onecolumn (second format)
+\documentclass[twocolumn]{svjour3}           % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage{cite}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+
+\usepackage{lineno}
+\linenumbers
+
+\usepackage{url}
+
+\journalname{J Grid Computing}
+
+\begin{document}
+
+\title{Modeling Allocation Utilization Strategies on Supercomputers}
+
+\author{
+    Alexey~Poyda \and
+    Mikhail~Titov \and 
+    Alexei~Klimentov \and 
+    Jack~C.~Wells \and 
+    Sarp~Oral \and 
+    Kaushik~De \and 
+    Danila~Oleynik \and 
+    Shantenu~Jha
+}
+
+\institute{
+    A. Poyda \at National Research Centre Kurchatov Institute, Moscow, Russia\\\email{poyda@wdcb.ru} \and
+    M. Titov \at Lomonosov Moscow State University, Moscow, Russia\\\email{mikhail.titov@cern.ch} \and
+    A. Klimentov \and S. Jha \at Brookhaven National Laboratory, Upton, NY, USA \and
+    J.C. Wells \and S. Oral \at Oak Ridge National Laboratory, Oak Ridge, TN, USA \and
+    K. De \and D. Oleynik \at University of Texas at Arlington, Arlington, TX, USA \and
+    S. Jha \at Rutgers University, Piscataway, NJ, USA
+}
+
+\authorrunning{Alexey~Poyda, Mikhail~Titov et al.}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+\maketitle
+
+\begin{abstract}
+\input{0-abstract}
+\keywords{supercomputers \and utilization modeling \and execution strategy \and the Titan supercomputer}
+\end{abstract}
+
+
+\section{Introduction}
+\label{sec-intro}
+\input{1-introduction}
+
+
+\section{Related works}
+\label{sec-related-works}
+\input{2-related-works}
+
+
+\section{Approach for static strategy selection}
+\label{sec-strategy}
+
+\subsection{General description}
+\label{sec-strategy-1}
+\input{3-1-strategy-description}
+
+\subsection{Quantitative model of utilization of allocation time}
+\label{sec-strategy-2}
+\input{3-2-strategy-model}
+
+\subsection{Simulator}
+\label{sec-strategy-3}
+\input{3-3-strategy-simulator}
+
+\subsection{Testing and validation}
+\label{sec-strategy-4}
+\input{3-4-strategy-validation}
+
+
+\section{Experiments}
+\label{sec-experiments}
+
+\subsection{Background of the study}
+\label{sec-experiments-1}
+\input{4-1-study-background}
+
+\subsection{Simulator with Titan log data}
+\label{sec-experiments-2}
+\input{4-2-study-simulator-titan-log}
+
+\subsection{Analysis of Titan log data}
+\label{sec-experiments-3}
+\input{4-3-study-analysis-titan-log}
+
+
+\section{Conclusion and discussion}
+\label{sec-conclusions}
+\input{5-conclusions}
+
+
+\begin{acknowledgements}
+\input{acknowledgements}
+\end{acknowledgements}
+
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliography{}   % name your BibTeX data base
+
+% Non-BibTeX users please use
+\begin{thebibliography}{}
+\input{bibliography-plain}
+\end{thebibliography}
+
+\clearpage
+\appendix
+\input{appendix}
+
+\end{document}
