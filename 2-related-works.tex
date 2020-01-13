@@ -1,4 +1,11 @@
-Efforts to increase the efficiency of jobs processing (i.e., to maximize the chance of utilization of the total allocation time) at supercomputers/HPCs could be categorized into the following classes of approaches: i) \textit{queue time predictions}, also could be referred as batch queue prediction; ii) \textit{runtime prediction} or prediction of job execution time; iii) \textit{meta-scheduling}, which is performed by the corresponding workload management system or service and is responsible for jobs placement according to its internal mechanisms.
+Existing efforts to increase the efficiency of jobs processing (i.e., to
+maximize the chance of utilization of the total allocation time) at
+supercomputers/HPCs can be categorized into the following classes of
+approaches: i) \textit{queue time predictions}, also could be referred as
+batch queue prediction; ii) \textit{runtime prediction} or prediction of job
+execution time; iii) \textit{meta-scheduling}, which is performed by the
+corresponding workload management system or service and is responsible for
+jobs placement according to its internal mechanisms.
 
 One of the latest works related to the area of queue time prediction was presented by Murali and Vadhiyar~\cite{ref-qespera}, and is about an integrated adaptive framework, Qespera, used for prediction of queue waiting times on parallel systems. This framework uses algorithm based on spatial clustering for predictions using history of job submissions and executions. Thus, the proposed approach includes such processes as finding similarities between the target job and the history jobs using a weighted distance metric, clustering to characterize the feature neighborhood of the target job based on the calculated distances, calculating the predicted queue waiting time by using adaptive method which chooses an appropriate prediction model among a standard deviation minimizer, a nearest neighbor predictor, and ridge regression. Among the works using the statistical method can be noted the research work of Nurmi et al.~\cite{ref-qbets} about a forecasting system QBETS (Queue Bounds Estimation from Time Series) that generates a predicted bound on the queue waiting time for the target job using a stationary history of previous jobs which have similar quantitative characteristics. The identification of similarity is estimated based on hierarchical clustering algorithm, and queue length-based downtime detection algorithm is used to identify system failures that affect job queuing delay.
 
