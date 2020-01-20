@@ -1,8 +1,8 @@
 Traditionally distributed computing such as grid computing (high-throughput
 computing, HTC) was the primary modality for analysis of large data volumes
-for experiments in fields of High Energy and Nuclear Physics. Increasingly
-however, high-performance computing (HPC) resources are being used to support
-the computing requirements.
+for experiments in fields of High Energy and Nuclear Physics.
+Increasingly however, high-performance computing (HPC) resources are being
+used to support the computing requirements.
 % Traditionally distributed (grid) computing was the primary modality for
 % analysis of large data volumes for experiments such as ATLAS and others at the
 % Large Hadron Collider (LHC). Increasingly however, high-performance computing
@@ -12,24 +12,27 @@ Given the difference in resource allocation and utilization between HTC and
 HPC resources, this poses interesting challenges for the experiments,
 including new approaches to workload management and flexible job sizing,
 especially for long running campaigns.
+Such campaigns would require many jobs to be executed, thus should follow a
+certain strategy of jobs forming and launching to achieve their goals.
 % For supercomputing facilities, ATLAS represents novel workloads properties and
 % execution requirements, viz., long running campaigns with many tasks and an
 % opportunity to improve task throughput by flexible job sizing and task
 % packing.
-A campaign execution strategy is represented as the selection of parameters
+A campaign execution strategy is described as the selection of parameters
 defining the number of jobs, along with their size, duration and distribution.
 % A campaign execution strategy is represented as the selection of parameters
 % defining the number of jobs, and distribution and size and temporal duration
 % of jobs.
-
 The aim of this paper is to investigate and explore campaign execution
 strategies with the objective of maximizing the probability of utilizing a
 given allocation as measured by the number of $cores \times hours$ consumed
-over a given period. We propose a simplified model and a simulator to compute
-the probability of utilizing a given allocation. The model was validated on
-both synthetic and real log data over several months of a DOE leadership
-computing facility resources (the Titan supercomputer) to identify possible
-campaign execution strategies and compare them with others.
+over a given period.
+We propose a simplified quantitative model and a workflow simulator to compute
+the probability of utilizing a given allocation.
+The model was validated on both synthetic and real log data over several
+months of a DOE leadership computing facility resources (the Titan
+supercomputer) to identify possible campaign execution strategies and
+compare them with others.
 % Identified strategies were compared with other possible strategies. 
 Experiments conducted using the simulator, showed that in most cases
 identified strategies increase the probability of utilizing an allocation
@@ -48,7 +51,6 @@ faster than a random choice of job parameters.
 % running there: the number of required nodes, required execution time
 % (walltime), and jobs generation rate. Predefined job parameters such as its
 % number, size, length, rate, are referred as an execution strategy.
-
 % The aim of this work is to identify execution strategies geared towards the
 % goal of maximizing the probability of utilization of allocated resources per
 % defined project on a supercomputer in a given time period. Resources
