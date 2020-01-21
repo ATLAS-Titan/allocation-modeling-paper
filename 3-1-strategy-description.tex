@@ -1,6 +1,34 @@
+
+We begin by defining some terms that although common, are used in differing
+ways. 
+
+\textit{Execution Strategy:} Execution strategy is a description of jobs
+launching process, which is presented as: (1) a set of jobs specification for
+discrete values or as a function, which defines jobs specifications for
+continuous values; and (2) job launching scheme that establishes jobs rate
+and/or order.
+
+A job specification in turn is a 2-tuple of key parameters such as a number of
+required (or requested) nodes, requested time (which in turn could be either
+execution time or walltime). Thus \texttt{job_specs = {num_nodes, walltime}}.
+
+The scheme in turn can be either static (discrete or continuous values) or
+dynamic (changeable according to internal or external conditions). A static
+execution strategy implies that: (i) Every job within each group would have
+the same specifications during the defined time period; and (2) the jobs
+launching scheme is static and immutable unless all stated jobs are executed.
+
+\textit{Allocation utilization} is described by: (1) an amount of resources
+that are allocated for the modeling process; (2) resources workload --
+schedules for resources being busy by using either historical log data or
+synthetic data; (3) a defined execution strategy to use in a simulation of
+jobs being executed; and (4) an estimation of expected utilization (as if it
+would be the actual utilization of allocated resources) during the modeling
+period of time.
+
 For the proposed approach the following parameters are significant (these
 parameters, as mentioned earlier, define execution strategy): job size,
-requested job walltime, job launching scheme (e.g., number of parallel job
+requested job wall-time, job launching scheme (e.g., number of parallel job
 launching streams, launching interval for consecutive jobs, etc.). Speaking
 of a static strategy we mean that parameters mentioned above stay constant
 during the total assessed period of time. In the current implementation of
