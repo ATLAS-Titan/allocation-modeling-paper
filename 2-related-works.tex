@@ -1,14 +1,81 @@
 Existing efforts to increase the efficiency of jobs processing (i.e., to
 maximize the chance of utilization of the total allocation time) at
 supercomputers/HPCs can be categorized into the following classes of
-approaches: i) \textit{queue time predictions}, also could be referred as
-batch queue prediction; ii) \textit{runtime prediction} or prediction of job
-execution time; iii) \textit{meta-scheduling}, which is performed by the
-corresponding workload management system or service and is responsible for
-jobs placement according to its internal mechanisms.
+approaches:
+i) \textit{queue time predictions}, also could be referred as batch queue
+prediction;
+ii) \textit{runtime prediction} or prediction of job execution time;
+iii) \textit{meta-scheduling}, which is performed by the corresponding workload
+management system or service and is responsible for jobs placement according to
+its internal mechanisms.
 
-One of the latest works related to the area of queue time prediction was presented by Murali and Vadhiyar~\cite{ref-qespera}, and is about an integrated adaptive framework, Qespera, used for prediction of queue waiting times on parallel systems. This framework uses algorithm based on spatial clustering for predictions using history of job submissions and executions. Thus, the proposed approach includes such processes as finding similarities between the target job and the history jobs using a weighted distance metric, clustering to characterize the feature neighborhood of the target job based on the calculated distances, calculating the predicted queue waiting time by using adaptive method which chooses an appropriate prediction model among a standard deviation minimizer, a nearest neighbor predictor, and ridge regression. Among the works using the statistical method can be noted the research work of Nurmi et al.~\cite{ref-qbets} about a forecasting system QBETS (Queue Bounds Estimation from Time Series) that generates a predicted bound on the queue waiting time for the target job using a stationary history of previous jobs which have similar quantitative characteristics. The identification of similarity is estimated based on hierarchical clustering algorithm, and queue length-based downtime detection algorithm is used to identify system failures that affect job queuing delay.
+One of the latest works related to the area of queue time prediction was
+presented by Murali and Vadhiyar~\cite{ref-qespera}, and is about an integrated
+adaptive framework, Qespera, used for prediction of queue waiting times on
+parallel systems.
+This framework uses algorithm based on spatial clustering for predictions using
+history of job submissions and executions.
+Thus, the proposed approach includes such processes as finding similarities
+between the target job and the history jobs using a weighted distance metric,
+clustering to characterize the feature neighborhood of the target job based on
+the calculated distances, calculating the predicted queue waiting time by using
+adaptive method which chooses an appropriate prediction model among a standard
+deviation minimizer, a nearest neighbor predictor, and ridge regression.
+Among the works using the statistical method can be noted the research work of
+Nurmi et al.~\cite{ref-qbets} about a forecasting system QBETS (Queue Bounds
+Estimation from Time Series) that generates a predicted bound on the queue
+waiting time for the target job using a stationary history of previous jobs,
+which have similar quantitative characteristics.
+The identification of similarity is estimated based on hierarchical clustering
+algorithm, and queue length-based downtime detection algorithm is used to
+identify system failures that affect job queuing delay.
 
-Another approaches for efficient resources utilization is to apply forecasting for jobs runtime. One of such approaches was presented by Yang et al.~\cite{ref-yang} with the proposed observation-based prediction. Authors demonstrated that short partial executions of an application are usable for the prediction generation, while using method approaching cross-platform performance translation based on relative performance between two platforms. This is applicable since most parallel codes are iterative and behave predictably manner after a minimal startup period. Guo et al.~\cite{ref-guo} propose a data-driven approach for predicting job statuses on HPC systems. The binary classification problem (having either underestimation of runtime or not) is addressed, and machine learning algorithms, such as XGBoost and Random Forests, are applied. Thus, the proposed model can be used to accurately predict whether a job can be completed before its estimated runtime expires.
+Another approaches for efficient resources utilization is to apply forecasting
+for jobs runtime.
+One of such approaches was presented by Yang et al.~\cite{ref-yang} with the
+proposed observation-based prediction.
+Authors demonstrated that short partial executions of an application are usable
+for the prediction generation, while using method approaching cross-platform
+performance translation based on relative performance between two platforms.
+This is applicable since most parallel codes are iterative and behave
+predictably manner after a minimal startup period.
+Guo et al.~\cite{ref-guo} propose a data-driven approach for predicting job
+statuses on HPC systems.
+The binary classification problem (having either underestimation of runtime or
+not) is addressed, and machine learning algorithms, such as XGBoost and Random
+Forests, are applied.
+Thus, the proposed model can be used to accurately predict whether a job can be
+completed before its estimated runtime expires.
 
-Meta-scheduling is mostly inherent to Grid computing, but it is expandable into heterogeneous infrastructure and multi-cluster systems. It uses both metrics estimated from gathered jobs meta-information (e.g., queue waiting time, runtime) and parameters assigned by the system itself or the user (e.g., priorities, min/max processing requirements, etc.). Its goal is to minimize the average job turnaround time in a non-dedicated environment. Work of Lerida et al.~\cite{ref-lerida} presents meta-schedulers for multi-cluster systems with focus on MetaLoRaS, a two-level meta-scheduler that assigns applications (PVM, MPI) according to forecasted turnaround time in each particular cluster. Proposed meta-scheduling techniques take the dynamics of the local workload into account (including job simulation in all clusters that is the base for the prediction algorithm) with further comparison of their effects on system performance. Sotiriadis et al.~\cite{ref-sotiriadis} give an overview of meta-scheduling approaches with focus on inter-cloud schedulers, requirements, topologies, scheduling algorithms, etc. Later in this paper we will introduce a workload management system (Section~\ref{sec-experiments-1-2}) which is considered as a meta-scheduler. Its jobs that are predetermined for the execution at a supercomputer are used in analysis to develop the corresponding strategy of their execution at the particular supercomputer. Work of Legrand et al.~\cite{ref-legrand} is close to the approach of the work presented in this paper, and is about to apply mixed policies (policy defines the order of jobs in the queue to be executed) for job characteristics in a weighted linear expression to improve jobs scheduling in Resource and Job Management Systems for supercomputers. Authors provided the method to construct mixed policies and showed the advantage of mixed policies over a pure policy (the bounded slowdown metric was used to compare performances of scheduling heuristics). Their focus is more on to optimize the EASY-Backfilling algorithm.
+Meta-scheduling is mostly inherent to Grid computing, but it is expandable into
+heterogeneous infrastructure and multi-cluster systems.
+It uses both metrics estimated from gathered jobs meta-information (e.g., queue
+waiting time, runtime) and parameters assigned by the system itself or the user
+(e.g., priorities, min/max processing requirements, etc.).
+Its goal is to minimize the average job turnaround time in a non-dedicated
+environment.
+Work of Lerida et al.~\cite{ref-lerida} presents meta-schedulers for
+multi-cluster systems with focus on MetaLoRaS, a two-level meta-scheduler that
+assigns applications (PVM, MPI) according to forecasted turnaround time in each
+particular cluster.
+Proposed meta-scheduling techniques take the dynamics of the local workload
+into account (including job simulation in all clusters that is the base for the
+prediction algorithm) with further comparison of their effects on system
+performance.
+Sotiriadis et al.~\cite{ref-sotiriadis} give an overview of meta-scheduling
+approaches with focus on inter-cloud schedulers, requirements, topologies,
+scheduling algorithms, etc.
+Later in this paper we will introduce a workload management system
+(Section~\ref{sec-experiments-1-2}) which is considered as a meta-scheduler.
+Its jobs that are predetermined for the execution at a supercomputer are used
+in analysis to develop the corresponding strategy of their execution at the
+particular supercomputer.
+Work of Legrand et al.~\cite{ref-legrand} is close to the approach of the work
+presented in this paper, and is about to apply mixed policies (policy defines
+the order of jobs in the queue to be executed) for job characteristics in a
+weighted linear expression to improve jobs scheduling in Resource and Job
+Management Systems for supercomputers.
+Authors provided the method to construct mixed policies and showed the
+advantage of mixed policies over a pure policy (the bounded slowdown metric was
+used to compare performances of scheduling heuristics).
+Their focus is more on to optimize the EASY-Backfilling algorithm.

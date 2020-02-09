@@ -1,13 +1,78 @@
-Most supercomputers are represented as computational facilities of collective use, providing access to computing resources on a competitive basis. In these conditions an individual user or a project group, with a large quota of allocated resources at the supercomputer, confronts the real task: what strategy to choose in order to utilize this quota successfully. Resource utilization is an actual usage of a partial or full amount of allocated resources within the time that is equal or less to the time for which these resources were allocated, so $ResourceUtilization \leq ResourceAllocation$ ($cores \times hours$). The term ``successfully'' is understood as an user's ability to utilize the allocated quota in the range of the requested time. First of all, this is affected by a dynamically changing supercomputer load (i.e., number of busy nodes at a certain timestamp), by competition for computing resources with other users and by the local policy of a particular supercomputer which sets the rules for this competition. 
+Most supercomputers are represented as computational facilities of collective
+use, providing access to computing resources on a competitive basis.
+In these conditions an individual user or a project group, with a large quota
+of allocated resources at a supercomputer, confronts the real task: what
+strategy to choose in order to utilize provided quota successfully.
+The term ``successfully'' is understood as an ability [for the user/group] to
+utilize the entire allocated quota in the range of the requested time.
+Resource utilization is an actual usage of a partial or full amount of
+allocated resources within the time that is equal or less to the time for which
+these resources were allocated, so $ResourceUtilization \leq ResourceAllocation$
+($cores \times hours$).
+First of all, the utilization process is affected by a dynamically changing
+supercomputer load (i.e., number of busy nodes at a certain timestamp), by
+competition for computing resources with other users and by the local policy of
+a particular supercomputer which sets the rules for this competition.
 
-Meanwhile, user is able to vary a number of parameters, which would be called as variable parameters, at jobs launch on the supercomputer, which can eventually strongly influence the amount of computing resources consumed during the requested time. In the first place, such parameters include size and length of the job, expressed in requested number of nodes and walltime, respectively, since the values of these parameters can affect the job waiting time in the supercomputer's queue. And this in turn can affect the total number of jobs that will be launched on a supercomputer in a specified time and, as a result, the total amount of consumed resources. A set of specific values of variable parameters defined by a specified user or a project group will be referred to as a job launch strategy for this user or group.
+Meanwhile, there is a set of job parameters that are under the user control,
+called as variable parameters, used to launch jobs on the supercomputer, which
+would eventually strongly influence the amount of computing resources consumed
+during the requested time.
+In the first place, such parameters include size and length of every job,
+expressed in requested number of compute nodes and estimated execution time,
+respectively, since the values of these parameters would affect jobs' waiting
+time in the supercomputer's queue.
+And this in turn will affect the total number of jobs that expected to be
+launched on the supercomputer in a particular time period and, as a result, the
+total amount of consumed resources.
+Section~\ref{sec-strategy-1} provides the essential terminology
+including descriptions with these variable parameters.
 
-Of course, in some projects, not all variable parameters can change their values. For example, there are projects that can not work with more than one node. But for other projects such choice is possible. In this case, the task of choosing a strategy, which increases probability of successful utilization of a large allocated quota of supercomputer time, becomes relevant.
+% A set of specific values of variable parameters defined by a specified user or
+% a project group will be referred to as a job launch strategy for this user
+% or group.
 
-Finding the strategy that outperforms any arbitrary one is a complex task due to dependence of the corresponding variable parameters on a great number of dynamically varying factors that are difficult to predict because of activities of other users. The task can be simplified by looking for a static execution strategy, which means a strategy with values of variable parameters that do not change over time. Our hypothesis, which should also be tested, is that in most cases the static execution strategy will give a higher probability of successful utilization of a large allocated quota of supercomputer time than, for example, a random dynamic strategy.
+In some projects, not all variable parameters are allowed to be changed.
+For example, there are projects that can not work with more than one compute
+node, but in general, for other projects such choice is possible.
+In this case, the task of choosing an outperform strategy for defining job
+parameters and corresponding launching scheme becomes relevant.
 
-There is no only one such outperforming strategy that would work for all supercomputers or will fit all users and project groups needs, since every strategy depends on a particular computing workflow and needs of one who requests this strategy.
+% In this case, the task of choosing a strategy, which increases probability of
+% successful utilization of a large allocated quota of supercomputer time,
+% becomes relevant.
 
-Therefore, an effective utilization of allocated resources relies on well-defined execution strategy. Execution strategy should guarantee an achievement of the requested utilization over defined time interval, thus such strategy will maximize the probability of utilizing a particular allocated resources completely. It is also possible that the utilization of the whole allocation time is not feasible, in this case the appropriate execution strategy will facilitate to increase the utilization in compare to no strategy at all. Furthermore, such approach is applicable for the estimation of probable utilization value of potentially allocated resources according to defined job launch parameters, supercomputer load, and chosen execution strategy.
+Finding the strategy that outperforms any arbitrary one is a complex task due
+to dependence of the corresponding variable parameters on a great number of
+dynamically varying factors that are difficult to predict because of other
+users activities.
+The task can be simplified by keeping values of variable parameters unchangeable
+over a period of campaign running time (i.e., static strategy over a long period
+of time).
+% The task can be simplified by looking for a static execution strategy, which
+% means a strategy with values of variable parameters that do not change over
+% time.
+Our hypothesis is that in most cases such strategy will give a higher
+probability of successful utilization of a large allocated quota of
+supercomputer's resources, for example, than a random dynamic strategy.
 
-This paper provides key points of design and development of an approach to and technique of finding static strategies of jobs launch for a given project on given supercomputer resources, which increases the probability of successful utilization of a large allocated quota of supercomputer time.
+There is no only one such outperforming strategy that would work for all
+supercomputers or will fit all users and project groups needs, since every
+strategy depends on a particular computing workflow and needs of one who
+requests this strategy.
+
+Therefore, an effective utilization of allocated resources relies on
+well-defined strategy, which should guarantee an achievement of the requested
+utilization over defined time interval, thus such strategy will maximize the
+probability of utilizing a particular allocated resources entirely.
+It is also possible that the utilization of the whole allocation time is not
+feasible, in this case the appropriate strategy will facilitate to increase the
+utilization in compare to no strategy at all.
+Furthermore, such approach is applicable for the estimation of probable
+utilization value of potentially allocated resources according to defined job
+launch parameters, supercomputer load, and chosen strategy.
+
+This paper provides key points of design and development of an approach to and
+technique of finding static strategies of jobs launch for a given project on
+given supercomputer resources, which increases the probability of successful
+utilization of a large allocated quota of computing resources.
